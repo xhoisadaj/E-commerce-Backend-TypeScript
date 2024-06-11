@@ -37,8 +37,9 @@ export class ProductController {
   public deleteProduct = async (req: Request, res: Response): Promise<Response> => {
     const isDeleted = await this.productService.deleteProduct(Number(req.params.id));
     if (isDeleted) {
-      return res.status(204).send();
+      return res.status(200).json({ message: "Product successfully deleted" });
     }
     return res.status(404).json({ message: "Product not found" });
   };
+  
 }
